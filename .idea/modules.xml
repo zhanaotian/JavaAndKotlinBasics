@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JavaAndKotlinBasics.iml" filepath="$PROJECT_DIR$/JavaAndKotlinBasics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JavaAndKotlinBasics_main.iml" filepath="$PROJECT_DIR$/.idea/modules/JavaAndKotlinBasics_main.iml" group="JavaAndKotlinBasics" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JavaAndKotlinBasics_test.iml" filepath="$PROJECT_DIR$/.idea/modules/JavaAndKotlinBasics_test.iml" group="JavaAndKotlinBasics" />
+    </modules>
+  </component>
+</project>
