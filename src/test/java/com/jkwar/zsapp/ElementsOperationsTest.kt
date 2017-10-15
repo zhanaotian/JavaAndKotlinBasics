@@ -1,69 +1,92 @@
 package com.jkwar.zsapp
 
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Test
 
+
+/**
+ * 元素操作符
+ */
 class ElementsOperationsTest {
+  val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
-  private val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
-  val listWithNull = listOf(1, 3, 5, null, 7, 9)
-
-  //返回包含去掉前n个元素的所有元素的列表
+  //如果指定集合可以在集合中找到，返回true
   @Test
-  fun dropTest() {
-    assertEquals(listOf(5, 6, 7, 8, 9, 10), list.drop(4))
+  fun containsTest() {
+    assertTrue(list.contains(3))
   }
 
-  //返回根据给定函数从第一项开始去掉指定元素的列表
+  //返回给定index对应的元素，如果index数据越界抛出异常
   @Test
-  fun dropWhileTest() {
-    assertEquals(listOf(1, 3, 5, 7, 9), list.dropWhile { it % 2 == 0 })
+  fun elementAtTest() {
+    assertEquals(6, list.elementAt(5))
   }
 
-
-  //过滤所有符合给定函数条件的元素
+  //返回给定indexd对应的元素，如果数据越界则根据指定的函数返回默认值
   @Test
-  fun filterTest() {
-    assertEquals(listOf(2, 4, 6, 8, 10), list.filter { it % 2 == 0 })
+  fun elementAtOrElseTest() {
+    assertEquals(100, list.elementAtOrElse(10, { it * 10 }))
   }
 
-  //过滤所有不符合给定函数条件的元素
+  //返回给定index对应的元素，如果index越界则返回null
   @Test
-  fun filterNotTest() {
-    assertEquals(listOf(1, 3, 5, 7, 9), list.filterNot { it % 2 == 0 })
+  fun elementAtOrNullTest() {
+    assertNull(list.elementAtOrNull(10))
   }
 
-  //过滤所有元素中不是null的元素
+  //返回符合给定函数条件的第一个元素
   @Test
-  fun filterNotNullTest() {
-    assertEquals(listOf(1, 3, 5, 7, 9), listWithNull.filterNotNull())
+  fun firstTest() {
+    assertEquals(5, list.first { it % 5 == 0 })
   }
 
-  //过滤一个list中指定index的元素
+  //返回符合给定函数条件的第一个元素，如果没有符合返回null
   @Test
-  fun sliceTest() {
-    assertEquals(listOf(2, 3), list.slice(listOf(1, 2)))
-    assertEquals(listOf(4, 5), list.slice(3..4))
+  fun firstOrNull() {
+    assertNull(list.firstOrNull { it % 11 == 0 })
   }
 
-  //返回从第一个开始的n个元素
+  //返回指定元素的第一个index，如果不存在，则返回-1
   @Test
-  fun takeTest() {
-    assertEquals(listOf(1, 2, 3), list.take(3))
+  fun indexOfTest() {
+    assertEquals(9, list.indexOf(10))
   }
 
-  //返回从最后一个开始的n个元素
+  //返回第一个符合给定函数条件的元素的index，如果不存在，则返回 -1
   @Test
-  fun takeLastTest() {
-    assertEquals(listOf(8, 9, 10), list.takeLast(3))
+  fun indexOfFirstTest() {
+    assertEquals(8, list.indexOfFirst { it % 9 == 0 })
   }
 
-  //返回从第一个开始符合给定函数条件的元素
+  //返回最后一个符合给定函数条件的元素的index，如果不存在，则返回 -1
   @Test
-  fun takeWhile() {
-    assertEquals(listOf(2, 4, 6, 8, 10), list.takeWhile { it % 2 == 0 })
+  fun indexOfLastTest() {
+    assertEquals(9, list.indexOfLast { it % 10 == 0 })
   }
 
+  //返回符合给定函数条件的的最后一个元素
+  @Test
+  fun lastTest() {
+    assertEquals(9, list.last { it % 9 == 0 })
+  }
+
+  //返回符合给定函数条件的的最后一个元素，如果没有则返回null
+  @Test
+  fun lastOrNullTest() {
+    assertEquals(10, list.lastOrNull { it % 10 == 0 })
+  }
+
+  //返回符合函数条件的单个元素，如果没有符合或者超过一个，则抛出异常
+  @Test
+  fun singleTest() {
+    assertEquals(9, list.single { it % 9 == 0 })
+  }
+
+  //返回符合函数条件的单个元素，如果没有符合或者超过一个，则返回null
+  @Test
+  fun singleOrNullTest() {
+    assertNull(list.singleOrNull { it % 17 == 0 })
+  }
 
 }
