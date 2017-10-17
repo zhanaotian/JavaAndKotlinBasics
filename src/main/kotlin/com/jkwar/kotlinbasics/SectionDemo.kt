@@ -1,5 +1,8 @@
 package com.jkwar.kotlinbasics
 
+/**
+ * 区间
+ */
 fun main(args: Array<String>) {
   val i = 8
   if (i in 1..10) { // 等同于 1 <= i && i <= 10
